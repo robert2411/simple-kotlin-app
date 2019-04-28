@@ -1,22 +1,31 @@
 package biz.stevens.todo.controller
 
 import biz.stevens.todo.service.TodoService
-import org.springframework.web.bind.annotation.*
-import java.util.*
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.ui.set
+import org.springframework.web.bind.annotation.GetMapping
 
-@RestController
-@RequestMapping("/v1/todo")
+@Controller
 class TodoController(val todoService: TodoService) {
 
-    @GetMapping()
-    fun getAllTodos(): List<Todo> = todoService.getAllTodos().asSequence().map(::map).toList()
+    @GetMapping("/")
+    fun getAllTodos(model: Model): String {
+        val todos = todoService.getAllTodos().asSequence().map(::map).toList()
 
-    @PostMapping()
-    fun createNewTodo(@RequestBody todo: Todo): Todo = map(todoService.createNewTodo(map(todo)))
+        model["title"] = "test"
+        model["todos"] = todos
 
-    @GetMapping("/{id}")
-    fun getTodoById(@PathVariable id: UUID): Todo = map(todoService.getTodoById(id))
+        return "index"
+    }
 
-    @DeleteMapping("/{id}")
-    fun deleteTodoById(@PathVariable id: UUID): Unit = todoService.deleteTodoById(id)
+//    @PostMapping
+//    fun createNewTodo(@RequestBody todo: Todo): Todo = map(todoService.createNewTodo(map(todo)))
+//
+//    @GetMapping("/{id}")
+//    fun getTodoById(@PathVariable id: UUID): Todo = map(todoService.getTodoById(id))
+//
+//    @DeleteMapping("/{id}")
+//    fun deleteTodoById(@PathVariable id: UUID): Unit = todoService.deleteTodoById(id)
+//    }
 }

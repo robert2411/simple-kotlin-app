@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface TodoRepository : CrudRepository<TodoEntity, UUID> {
-}
+interface TodoRepository : CrudRepository<TodoEntity, UUID>

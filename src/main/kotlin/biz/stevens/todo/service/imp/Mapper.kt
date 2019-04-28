@@ -1,4 +1,4 @@
-package biz.stevens.todo.service
+package biz.stevens.todo.service.imp
 
 import biz.stevens.todo.repository.TodoEntity
 
