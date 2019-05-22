@@ -9,7 +9,7 @@ import java.util.*
 class TodoRestController(val todoService: TodoService) {
 
     @GetMapping
-    fun getAllTodos(): List<Todo> = todoService.getAllTodos().asSequence().map(::map).toList()
+    fun getAllTodos(): List<Todo> = todoService.getAllTodos().map(::map).toList()
 
     @PostMapping
     fun createNewTodo(@RequestBody todo: Todo): Todo = map(todoService.createNewTodo(map(todo)))

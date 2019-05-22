@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1beta10
+kind: Config
+# Enforce SKaffold to use Jib
+build:
+  local:
+    push: false
+  # Generated artifact
+  artifacts:
+    - image: stevens.biz/todo
+      # Use jibMaven
+      jibMaven: {}
+# Execute deployment.yml
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes/deployment.yml

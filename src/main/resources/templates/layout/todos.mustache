@@ -1,6 +1,28 @@
-<div class="starter-template">
+<div class="accordion" id="accordionExample">
     {{#todos}}
-    <h1>{{task}}</h1>
-    <h3>{{id}}</h3>
+        <div class="card">
+            <div class="card-header" id="heading{{id}}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{id}}"
+                            aria-expanded="false" aria-controls="collapse{{id}}">
+                        <h1>{{title}}</h1>
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#accordionExample">
+                <div class="card-body">
+                    {{description}} - {{created}}
+                </div>
+            </div>
+        </div>
     {{/todos}}
+
+    <form action="/" method="post">
+        <label for="title">title:</label>
+        <input type="text" name="title"/>
+        <label for="description">description:</label>
+        <input type="text" name="description"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>

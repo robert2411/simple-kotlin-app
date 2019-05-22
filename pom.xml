@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.2.71</kotlin.version>
-        <webjars.bootstrap.version>3.3.7</webjars.bootstrap.version>
+        <webjars.bootstrap.version>4.3.1</webjars.bootstrap.version>
     </properties>
 
     <dependencies>
@@ -108,6 +108,16 @@
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <to>
+                        <image>${artifactId}</image>
+                    </to>
+                </configuration>
             </plugin>
         </plugins>
     </build>
